@@ -8,8 +8,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/perfis', function () {
-    return view('perfis');
+Route::get('/login', function () {
+    return view('login');
 });
 
 Route::get('/profissional', function () {

@@ -35,7 +35,7 @@
             margin-top: 20px; /* Espaçamento acima do botão */
             text-align: center; /* Centraliza o texto no botão */
             width: 50%; /* Faz o botão ocupar toda a largura do container */
-            margin-left: 150phppx;
+            margin-left: 150px;
         }
     </style>
 

@@ -1,22 +1,22 @@
-<!-- resources/views/welcome.blade.php -->
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela Home da Aplicação</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
 <body>
-       <!-- Código para exibir a mensagem fora da div container -->
-@if (session('success'))
+
+    @if (session('success'))
     <div id="success-message" class="alert alert-success custom-alert">
         {{ session('success') }}
     </div>
-@endif
+    @endif
 
     <div class="container">
-        <!-- Seção de Imagem com Texto Sobreposto -->
         <div class="welcome-section" style="text-align: center; padding: 50px;">
             <h1>Bem-vindo ao seu site de busca de profissionais!</h1>
             <p class="description">
@@ -28,8 +28,8 @@
             </p>
         </div>
 
-        <!-- Seção de Botões de Profissões -->
         <h1 style="text-align:center; margin-top: 20px;">A busca pelo profissional ideal começa aqui!</h1>
+        <p class="instruction-text">Escolha a categoria do profissional que você necessita, click nela e verá profissionais perto de você!</p>
         <div class="profession-buttons" style="text-align:center;">
             <a href="{{ route('categories.show', 'eletricista') }}">Eletricista</a>
             <a href="{{ route('categories.show', 'encanador') }}">Encanador</a>
@@ -47,21 +47,20 @@
             <a href="{{ route('categories.show', 'diarista') }}">Diarista</a>
             <a href="{{ route('categories.show', 'costureira') }}">Costureira</a>
             <a href="{{ route('categories.show', 'cuidadora') }}">Cuidadora</a>
-            <a href="{{ route('categories.show', 'cozinheira') }}">Cozinheira</a>  
+            <a href="{{ route('categories.show', 'cozinheira') }}">Cozinheira</a>
             <a href="{{ route('categories.show', 'vendedora') }}">Vendedora</a>
         </div>
-        
-           <!-- Script para ocultar a mensagem após alguns segundos -->
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const message = document.getElementById('success-message');
-        if (message) {
-            setTimeout(() => {
-                message.style.display = 'none';
-            }, 5000); // Oculta após 5 segundos
-        }
-    });
-</script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const message = document.getElementById('success-message');
+                if (message) {
+                    setTimeout(() => {
+                        message.style.display = 'none';
+                    }, 5000);
+                }
+            });
+        </script>
 
         <div class="menu" style="text-align: center; margin-top: 50px;"> <!-- Ajuste da margem superior -->
             <h2 class="menu-question">Quer ser um profissional cadastrado?</h2>
@@ -94,6 +93,6 @@
             </div>
         </footer>
     </div>
-
 </body>
+
 </html>
