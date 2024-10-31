@@ -1,0 +1,206 @@
+/* Adicione ao seu arquivo style.css */
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    animation: rainbow-background 30s infinite;
+}
+
+@keyframes rainbow-background {
+    0% { background: black; }
+    10% { background: black; }
+    30% { background: black; }
+    50% { background: black; }
+    70% { background: black; }
+    90% { background: black; }
+    100% { background: black; }
+}
+
+.container {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.profession-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.profession-buttons a {
+    display: inline-block;
+    padding: 15px 20px;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #000000;
+    background-color: #fff;
+    border-radius: 30px;
+    transition: background-color 0.3s ease;
+}
+
+.profession-buttons a:hover {
+    background-color: #1eff00;
+}
+
+/* Estilos específicos para a página de categorias */
+.category-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-container h1 {
+    margin-bottom: 20px;
+}
+
+.category-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.category-container th, .category-container td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+.category-container th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.category-container tr:hover {
+    background-color: #f1f1f1;
+}
+
+.form-container {    /* Cor de fundo e posicionamento do meu formulario */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    width: 100%;
+    max-width: 500px;
+    background-color: rgb(0, 0, 0);
+    border-radius: 15px;
+    box-shadow: 0 1px 40px whitesmoke;
+    margin-bottom: 50px;
+    color: white;
+}
+
+
+.blue-button {   /* Cor dos botões Salvar e Voltar da tela cadastrar */
+    background-color: blue;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+
+
+h1 {
+    text-align: center;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: yellowgreen;
+}
+
+.welcome-message {
+    text-align: center;
+}
+
+.description {
+    max-width: 750px;
+    margin: 20px auto;
+    font-size: 1.1em;
+    color: rgb(255, 255, 255);
+}
+
+.menu-question {
+    color: rgb(255, 255, 255);
+    font-size: 1.1em;
+}
+
+.menu-question-2 {
+    color: rgb(255, 0, 0);
+    font-size: 1em;
+}
+
+
+
+
+.footer {
+    background-color: rgb(0, 0, 0); /* Cor de fundo do rodapé */
+    color: #ffffff; /* Cor do texto */
+    padding: 20px 0; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+    clear: both; /* Limpa flutuações anteriores */
+}
+
+.footer-columns {
+    display: block; /* Muda para bloco para evitar o lado a lado */
+    max-width: 1200px; /* Largura máxima do rodapé */
+    margin: 0 auto; /* Centraliza o rodapé */
+}
+
+.footer-column {
+    display: inline-block; /* Permite que as colunas fiquem lado a lado */
+    width: 30%; /* Largura de cada coluna */
+    vertical-align: top; /* Alinha as colunas ao topo */
+    margin: 0 1%; /* Margem lateral entre as colunas */
+}
+
+.footer-column h3 {
+    margin-bottom: 10px; /* Espaçamento abaixo do título da coluna */
+}
+
+.footer-column a {
+    display: block; /* Cada link ocupa uma linha */
+    color: rgb(255, 255, 255)d1d; /* Cor do link */
+    text-decoration: none; /* Remove o sublinhado dos links */
+    margin: 5px 0; /* Margem entre os links */
+}
+
+.footer-column a:hover {
+    text-decoration: underline; /* Adiciona sublinhado ao passar o mouse */
+}
