@@ -13,6 +13,7 @@ class Professional extends Model
     protected $fillable = [
         'name',
         'category',
+        'city',
         'contact',
     ];
 }

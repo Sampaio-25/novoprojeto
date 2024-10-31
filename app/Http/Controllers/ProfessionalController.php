@@ -28,16 +28,19 @@ class ProfessionalController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
             'contact' => 'required|string|max:15'
         ]);
 
         // Criação do novo profissional
         Professional::create([
             'name' => $request->name,
+            'city' => $request->city,
             'category' => $request->category,
             'contact' => $request->contact
         ]);
 
-        return redirect()->route('professionals.create')->with('success', 'Profissional cadastrado com sucesso!');
+        return redirect('/')->with('success', 'Profissional cadastrado com sucesso!');
+
     }
 }

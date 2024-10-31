@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfessionalController;
-use App\Http\Controllers\SearchController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -17,8 +16,8 @@ Route::get('/profissional', function () {
     return view('profissional');
 });
 
-Route::get('/cliente', function () {
-    return view('cliente');
+Route::get('/politicadeprivacidade', function () {
+    return view('politicadeprivacidade');
 });
 
 // Rota para buscar profissionais por categoria

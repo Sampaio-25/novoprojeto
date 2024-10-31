@@ -1,27 +1,20 @@
 <!-- resources/views/welcome.blade.php -->
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela Home da Aplicação</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    <style>
-        /* Adicionando estilo para o título */
-        .welcome-section h1 {
-            margin-top: 150px; /* Ajuste esse valor conforme necessário */
-        }
-
-        /* Adicionando estilo para os botões */
-        .profession-buttons a {
-            margin-bottom: -5px; /* Ajuste esse valor para aumentar ou diminuir o espaço */
-            display: inline-block; /* Para garantir que as margens sejam aplicadas corretamente */
-        }
-    </style>
 </head>
-
 <body>
+       <!-- Código para exibir a mensagem fora da div container -->
+@if (session('success'))
+    <div id="success-message" class="alert alert-success custom-alert">
+        {{ session('success') }}
+    </div>
+@endif
+
     <div class="container">
         <!-- Seção de Imagem com Texto Sobreposto -->
         <div class="welcome-section" style="text-align: center; padding: 50px;">
@@ -58,6 +51,18 @@
             <a href="{{ route('categories.show', 'vendedora') }}">Vendedora</a>
         </div>
         
+           <!-- Script para ocultar a mensagem após alguns segundos -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const message = document.getElementById('success-message');
+        if (message) {
+            setTimeout(() => {
+                message.style.display = 'none';
+            }, 5000); // Oculta após 5 segundos
+        }
+    });
+</script>
+
         <div class="menu" style="text-align: center; margin-top: 50px;"> <!-- Ajuste da margem superior -->
             <h2 class="menu-question">Quer ser um profissional cadastrado?</h2>
             <h2 class="menu-question-2">
@@ -71,7 +76,7 @@
                 <div class="footer-column">
                     <h3>Institucional</h3>
                     <a href="#">Quem Somos</a>
-                    <a href="#">Política de Privaciade</a>
+                    <a href="/politicadeprivacidade">Política de Privaciade</a>
                     <a href="#">Nossos Parceiros</a>
                 </div>
                 <div class="footer-column">
@@ -89,6 +94,6 @@
             </div>
         </footer>
     </div>
-</body>
 
+</body>
 </html>

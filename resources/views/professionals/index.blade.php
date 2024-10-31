@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profissionais da Categoria: {{ $category }}</title>
+    <title>Profissionais: {{ $category }}</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 <body>
@@ -33,6 +33,11 @@
                 </tbody>
             </table>
         @endif
+        
+        <!-- Botão de Voltar para a tela Welcome -->
+        <button class="blue-button" style="margin-top: 20px;">
+            <a href="/" style="text-decoration: none; color: white;">Voltar a tela inicial</a>
+        </button>
     </div>
 </body>
 </html>
