@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Cadastro de Usuário</title>
     <style>
         * {
             box-sizing: border-box;
@@ -21,13 +21,14 @@
             font-family: 'Arial', sans-serif;
         }
 
-        .login-container {
+        .register-container {
             background-color: black;
             padding: 40px;
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            width: 300px;
+            width: 550px;
             text-align: center;
+            margin-top: 5px;
         }
 
         h1 {
@@ -59,8 +60,8 @@
             outline: none;
         }
 
-        .login-button {
-            width: 100%;
+        .register-button {
+            width: 50%;
             padding: 10px;
             background-color: #007BFF;
             color: white;
@@ -69,28 +70,50 @@
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
+            margin-top: 5px;
         }
 
-        .login-button:hover {
+        .register-button:hover {
             background-color: #0056b3;
+        }
+
+        .login-link {
+            display: block;
+            margin-top: 15px;
+            color: #00f2fe;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 
 <body>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form action="{{ route('professionals.store') }}" method="POST">
+    <div class="register-container">
+        <h1>Cadastro de Usuário</h1>
+        <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="input-group">
-                <label for="email">E-mail:</label>
-                <input type="email" id="email" name="email" placeholder="Digite seu email cadastrado" required>
+                <label for="name">Nome:</label>
+                <input type="text" id="name" name="name" placeholder="Digite aqui seu nome completo" required>
             </div>
             <div class="input-group">
-                <label for="senha">Senha:</label>
-                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Digite seu melhor email" required>
             </div>
-            <button type="submit" class="login-button">Login</button>
+            <div class="input-group">
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" placeholder="Crie uma senha para login" required>
+            </div>
+            <div class="input-group">
+                <label for="password_confirmation">Confirme a Senha:</label>
+                <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirme sua senha" required>
+            </div>
+            <button type="submit" class="register-button">Cadastrar</button>
+            <a href="{{ route('login') }}" class="login-link">Já tem cadastro? Clique aqui</a>
         </form>
     </div>
 </body>
