@@ -24,6 +24,12 @@
         <label for="contact">Contato:</label>
         <input type="text" id="contact" name="contact" placeholder="Digite seu número de telefone!" required>
         <p></p>
+        <label for="description">Descrição:</label>
+        <textarea id="description" name="description"></textarea>
+        <p></p>
+        <label for="photos">Fotos de Trabalhos:</label>
+        <input type="file" id="photos" name="photos[]" multiple>
+        <p></p>
         <button type="submit" class="blue-button">Salvar</button>
         <button class="blue-button" style="margin-left: 10px;">
             <a href="/" style="text-decoration: none; color: white;">Voltar</a>

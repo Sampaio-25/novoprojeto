@@ -35,16 +35,6 @@
             color: white;
         }
 
-        .alert {
-            background-color: #28a745;
-            color: white;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            text-align: center;
-            font-size: 14px;
-        }
-
         .input-group {
             margin-bottom: 15px;
             text-align: left;
@@ -103,22 +93,14 @@
 <body>
     <div class="login-container">
         <h1>Login</h1>
-
-        <!-- Exibir mensagem de sucesso se existir -->
-        @if(session('success'))
-            <div class="alert">
-                {{ session('success') }}
-            </div>
-        @endif
-
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('login') }}" method="POST"> <!-- Alterado para 'login' -->
             @csrf
             <div class="input-group">
                 <label for="email">E-mail:</label>
                 <input type="email" id="email" name="email" placeholder="Digite seu email cadastrado" required>
             </div>
             <div class="input-group">
-                <label for="password">Senha:</label>
+                <label for="password">Senha:</label> <!-- Alterado 'senha' para 'password' -->
                 <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
             </div>
             <button type="submit" class="login-button">Login</button>

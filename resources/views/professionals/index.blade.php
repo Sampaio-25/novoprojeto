@@ -1,4 +1,3 @@
-<!-- resources/views/professionals/index.blade.php -->
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -14,26 +13,31 @@
         <h1>Profissionais da Categoria: {{ ucfirst($category) }}</h1>
 
         @if ($professionals->isEmpty())
-        <p>Nenhum profissional encontrado nessa categoria.</p>
+            <p>Nenhum profissional encontrado nessa categoria.</p>
         @else
-        <table>
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Cidade</th>
-                    <th>Contato</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($professionals as $professional)
-                <tr>
-                    <td>{{ $professional->name }}</td>
-                    <td>{{ $professional->city }}</td>
-                    <td>{{ $professional->contact }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cidade</th>
+                        <th>Contato</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($professionals as $professional)
+                    <tr>
+                        <td>
+                            <!-- Aqui o nome do profissional é linkável para a página de detalhes -->
+                            <a href="{{ route('professional.show', $professional->id) }}">
+                                {{ $professional->name }}
+                            </a>
+                        </td>
+                        <td>{{ $professional->city }}</td>
+                        <td>{{ $professional->contact }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         @endif
 
         <!-- Botão de Voltar para a tela Welcome -->

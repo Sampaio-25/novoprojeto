@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela Home da Aplicação</title>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <style>
+        /* Estilo para o link de logout no canto superior direito */
+        .logout-link {
+            position: absolute;
+            top: 20px; /* Ajuste a distância do topo conforme necessário */
+            right: 20px; /* Ajuste a distância da direita conforme necessário */
+            font-size: 18px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .logout-link:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
@@ -15,6 +30,12 @@
         {{ session('success') }}
     </div>
     @endif
+
+    <!-- Link de Logout no canto superior direito -->
+    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" class="logout-link">Logout</a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
 
     <div class="container">
         <div class="welcome-section" style="text-align: center; padding: 50px;">
@@ -29,7 +50,7 @@
         </div>
 
         <h1 style="text-align:center; margin-top: 20px;">A busca pelo profissional ideal começa aqui!</h1>
-        <p class="instruction-text">Escolha a categoria do profissional que você necessita, click nela e verá profissionais perto de você!</p>
+        <p class="instruction-text">Escolha a categoria do profissional que você necessita, clique nela e verá profissionais perto de você!</p>
         <div class="profession-buttons" style="text-align:center;">
             <a href="{{ route('categories.show', 'eletricista') }}">Eletricista</a>
             <a href="{{ route('categories.show', 'encanador') }}">Encanador</a>
@@ -62,7 +83,7 @@
             });
         </script>
 
-        <div class="menu" style="text-align: center; margin-top: 50px;"> <!-- Ajuste da margem superior -->
+        <div class="menu" style="text-align: center; margin-top: 50px;">
             <h2 class="menu-question">Quer ser um profissional cadastrado?</h2>
             <h2 class="menu-question-2">
                 <a href="/professionals/register">Então clique aqui!</a>

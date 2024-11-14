@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProfessionalController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\LoginController;
 
 // Rota da tela principal da aplicação, tela de Bem-Vindo
 Route::get('/', function () {
@@ -18,8 +19,9 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'register']);
 
-// Rota para logout
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+// Rota de logout
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
 
 // Rota que abre a tela de exibição dos profissionais
 Route::get('/categories/{category}', [ProfessionalController::class, 'showByCategory'])->name('categories.show');
@@ -35,3 +37,10 @@ Route::post('/professionals', [ProfessionalController::class, 'store'])->name('p
 Route::get('/politicadeprivacidade', function () {
     return view('politicadeprivacidade');   // Rota para Politica de Privacidade
 });
+
+
+
+
+
+// Rota para exibir o perfil detalhado do profissional
+Route::get('/professional/{id}', [ProfessionalController::class, 'show'])->name('professional.show');

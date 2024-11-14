@@ -41,14 +41,14 @@ class AuthController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
         ]);
 
-        // Redireciona para a tela de login com uma mensagem de sucesso
-        return redirect()->route('login')->with('success', 'Cadastro realizado com sucesso! Faça o login.');
+        // Após cadastro, redireciona para a página de login, sem logar automaticamente
+        return redirect()->route('login')->with('status', 'Cadastro realizado com sucesso! Agora, faça login.');
     }
 
     // Processar logout

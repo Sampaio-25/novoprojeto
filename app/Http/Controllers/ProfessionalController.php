@@ -1,6 +1,5 @@
 <?php
 
-// app/Http/Controllers/ProfessionalController.php
 namespace App\Http\Controllers;
 
 use App\Models\Professional;
@@ -29,18 +28,38 @@ class ProfessionalController extends Controller
             'name' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'city' => 'required|string|max:255',
-            'contact' => 'required|string|max:15'
+            'contact' => 'required|string|max:15',
+            'description' => 'nullable|string',
+            'photos' => 'nullable|array',
+            'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' // Validação para fotos
         ]);
+
+        // Processa as fotos (caso existam)
+        $photos = [];
+        if ($request->hasFile('photos')) {
+            foreach ($request->file('photos') as $photo) {
+                $photos[] = $photo->store('photos', 'public');
+            }
+        }
 
         // Criação do novo profissional
         Professional::create([
             'name' => $request->name,
             'city' => $request->city,
             'category' => $request->category,
-            'contact' => $request->contact
+            'contact' => $request->contact,
+            'description' => $request->description,  // Armazena a descrição
+            'photos' => json_encode($photos), // Armazena as fotos como um JSON (caso existam)
         ]);
 
+        // Redireciona para a página inicial com uma mensagem de sucesso
         return redirect('/')->with('success', 'Profissional cadastrado com sucesso!');
+    }
 
+    // Exibe o perfil de um profissional
+    public function show($id)
+    {
+        $professional = Professional::findOrFail($id);  // Encontra o profissional pelo ID
+        return view('professionals.show', compact('professional'));  // Passa os dados do profissional para a view
     }
 }

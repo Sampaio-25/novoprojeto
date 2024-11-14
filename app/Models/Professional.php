@@ -1,5 +1,6 @@
 <?php
 
+// app/Models/Professional.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -9,11 +10,16 @@ class Professional extends Model
 {
     use HasFactory;
 
-    // Adicione as colunas que você deseja preencher
+    // Defina as colunas que podem ser preenchidas
     protected $fillable = [
         'name',
         'category',
         'city',
         'contact',
+        'description',
+        'photos',  // Campo para fotos
     ];
+
+    // Adicione qualquer relacionamento necessário aqui
 }
+
