@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
-<div class="form-container">
+<div class="form-container">a
     <h1>Cadastrar Profissional</h1>
     <form action="{{ route('professionals.store') }}" method="POST">
         @csrf
@@ -34,10 +34,6 @@
         <button class="blue-button" style="margin-left: 10px;">
             <a href="/" style="text-decoration: none; color: white;">Voltar</a>
         </button>
-
-
-
     </form>
-</div>
-
+  </div>
 </html>

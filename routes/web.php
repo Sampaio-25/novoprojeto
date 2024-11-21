@@ -38,9 +38,5 @@ Route::get('/politicadeprivacidade', function () {
     return view('politicadeprivacidade');   // Rota para Politica de Privacidade
 });
 
-
-
-
-
 // Rota para exibir o perfil detalhado do profissional
 Route::get('/professional/{id}', [ProfessionalController::class, 'show'])->name('professional.show');
