@@ -87,12 +87,33 @@
         .register-link:hover {
             text-decoration: underline;
         }
+
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .alert-success {
+            background-color: #28a745;
+            color: white;
+        }
     </style>
 </head>
 
 <body>
     <div class="login-container">
         <h1>Login</h1>
+
+        <!-- Exibir mensagem de sucesso -->
+        @if(session('success'))
+        <div class="alert alert-success" id="success-message">
+            {{ session('success') }}
+        </div>
+        @endif
+
         <form action="{{ route('login') }}" method="POST"> <!-- Alterado para 'login' -->
             @csrf
             <div class="input-group">
@@ -100,13 +121,25 @@
                 <input type="email" id="email" name="email" placeholder="Digite seu email cadastrado" required>
             </div>
             <div class="input-group">
-                <label for="password">Senha:</label> <!-- Alterado 'senha' para 'password' -->
+                <label for="password">Senha:</label>
                 <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
             </div>
             <button type="submit" class="login-button">Login</button>
             <a href="{{ route('register') }}" class="register-link">Ainda não tem cadastro? Clique aqui</a>
         </form>
     </div>
+
+    <script>
+        // Remove a mensagem de sucesso após 5 segundos (5000ms)
+        setTimeout(() => {
+            const successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.style.transition = "opacity 0.5s ease";
+                successMessage.style.opacity = 0;
+                setTimeout(() => successMessage.remove(), 500); // Remove o elemento após o fade-out
+            }
+        }, 5000);
+    </script>
 </body>
 
 </html>

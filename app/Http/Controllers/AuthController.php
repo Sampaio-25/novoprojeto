@@ -47,8 +47,8 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        // Após cadastro, redireciona para a página de login, sem logar automaticamente
-        return redirect()->route('login')->with('status', 'Cadastro realizado com sucesso! Agora, faça login.');
+        // Redirecionar para a página de login com uma mensagem de sucesso
+        return redirect()->route('login')->with('success', 'Usuário cadastrado com sucesso!');
     }
 
     // Processar logout
