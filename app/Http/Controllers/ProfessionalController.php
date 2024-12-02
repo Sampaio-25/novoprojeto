@@ -38,9 +38,11 @@ class ProfessionalController extends Controller
         $photos = [];
         if ($request->hasFile('photos')) {
             foreach ($request->file('photos') as $photo) {
-                $photos[] = $photo->store('photos', 'public');
+                // Salva o caminho corrigido com barras normais
+                $photos[] = str_replace('\\', '/', $photo->store('photos', 'public'));
             }
         }
+
 
         // Criação do novo profissional
         Professional::create([

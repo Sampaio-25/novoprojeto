@@ -88,7 +88,29 @@
             <p class="profile-detail"><strong>Especialidade:</strong> {{ $professional->category }}</p>
             <p class="profile-detail"><strong>Descrição:</strong> {{ $professional->description }}</p>
             <p class="profile-detail"><strong>Contato:</strong> {{ $professional->contact }}</p>
-            <p class="profile-detail"><strong>Fotos de trabalhos:</strong> {{ $professional->fotos }}</p>
+            <div class="profile-detail">
+                <strong>Fotos de trabalhos:</strong>
+                <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
+                    @if ($professional->photos && is_array(json_decode($professional->photos, true)))
+                        @foreach (json_decode($professional->photos) as $photo)
+                            <img src="{{ asset('storage/' . str_replace('\\', '/', $photo)) }}"
+                                 alt="Foto de trabalho de {{ $professional->name }}"
+                                 style="width: 100px; height: 100px; object-fit: cover; border-radius: 5px; cursor: pointer;"
+                                 onclick="openModal('{{ asset('storage/' . str_replace('\\', '/', $photo)) }}')">
+                        @endforeach
+                    @else
+                        <p>Nenhuma foto disponível.</p>
+                    @endif
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div id="photoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); justify-content: center; align-items: center; z-index: 1000;">
+                <span style="position: absolute; top: 10px; right: 20px; font-size: 2rem; color: white; cursor: pointer;" onclick="closeModal()">&#10006;</span>
+                <img id="modalImage" src="" alt="Foto ampliada" style="max-width: 90%; max-height: 90%; border-radius: 10px;">
+            </div>
+
+
             <nav>
             <a href="{{ url('/') }}" style="color: #fff; text-decoration: none;">Voltar</a>
         </nav>
@@ -98,4 +120,16 @@
         <p>&copy; {{ date('Y') }} Todos os direiros reservados!</p>
     </footer>
 </body>
+
+<script>
+    function openModal(imageSrc) {
+        document.getElementById('modalImage').src = imageSrc;
+        document.getElementById('photoModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('photoModal').style.display = 'none';
+    }
+</script>
+
 </html>

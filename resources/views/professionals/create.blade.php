@@ -10,7 +10,7 @@
 
 <div class="form-container">a
     <h1>Cadastrar Profissional</h1>
-    <form action="{{ route('professionals.store') }}" method="POST">
+    <form action="{{ route('professionals.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="name">Nome:</label>
         <input type="text" id="name" name="name" placeholder="Dgite seu nome aqui!" required>
