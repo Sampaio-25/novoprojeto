@@ -22,43 +22,45 @@ class ProfessionalController extends Controller
 
     // Armazena o profissional no banco de dados
     public function store(Request $request)
-    {
-        // Validação dos dados
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'category' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'contact' => 'required|string|max:15',
-            'description' => 'nullable|string',
-            'photos' => 'nullable|array',
-            'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' // Validação para fotos
-        ]);
+{
+    // Validação dos dados
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'category' => 'required|string|max:255',
+        'city' => 'required|string|max:255',
+        'contact' => 'required|string|max:15',
+        'description' => 'nullable|string',
+        'photos' => 'nullable|array',
+        'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' // Validação para fotos
+    ]);
 
+    // Inicializa o array de fotos
+    $photos = [];
 
-        if ($request->hasFile('photos')) {
-            // Verifica se é um único arquivo ou um array de arquivos
-            $uploadedPhotos = is_array($request->file('photos')) ? $request->file('photos') : [$request->file('photos')];
+    if ($request->hasFile('photos')) {
+        // Verifica se é um único arquivo ou um array de arquivos
+        $uploadedPhotos = is_array($request->file('photos')) ? $request->file('photos') : [$request->file('photos')];
 
-            foreach ($uploadedPhotos as $photo) {
-                // Salva o caminho corrigido com barras normais
-                $photos[] = str_replace('\\', '/', $photo->store('photos', 'public'));
-            }
+        foreach ($uploadedPhotos as $photo) {
+            // Salva o caminho corrigido com barras normais
+            $photos[] = str_replace('\\', '/', $photo->store('photos', 'public'));
         }
-
-
-        // Criação do novo profissional
-        Professional::create([
-            'name' => $request->name,
-            'city' => $request->city,
-            'category' => $request->category,
-            'contact' => $request->contact,
-            'description' => $request->description,  // Armazena a descrição
-            'photos' => json_encode($photos), // Armazena as fotos como um JSON (caso existam)
-        ]);
-
-        // Redireciona para a página inicial com uma mensagem de sucesso
-        return redirect('/')->with('success', 'Profissional cadastrado com sucesso!');
     }
+
+    // Criação do novo profissional
+    Professional::create([
+        'name' => $request->name,
+        'city' => $request->city,
+        'category' => $request->category,
+        'contact' => $request->contact,
+        'description' => $request->description,
+        'photos' => $photos ? json_encode($photos) : null, // Salva null se não houver fotos
+    ]);
+
+    // Redireciona para a página inicial com uma mensagem de sucesso
+    return redirect('/')->with('success', 'Profissional cadastrado com sucesso!');
+}
+
 
     // Exibe o perfil de um profissional
     public function show($id)
