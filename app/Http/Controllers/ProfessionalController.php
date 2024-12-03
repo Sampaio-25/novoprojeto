@@ -34,10 +34,12 @@ class ProfessionalController extends Controller
             'photos.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048' // Validação para fotos
         ]);
 
-        // Processa as fotos (caso existam)
-        $photos = [];
+
         if ($request->hasFile('photos')) {
-            foreach ($request->file('photos') as $photo) {
+            // Verifica se é um único arquivo ou um array de arquivos
+            $uploadedPhotos = is_array($request->file('photos')) ? $request->file('photos') : [$request->file('photos')];
+
+            foreach ($uploadedPhotos as $photo) {
                 // Salva o caminho corrigido com barras normais
                 $photos[] = str_replace('\\', '/', $photo->store('photos', 'public'));
             }
